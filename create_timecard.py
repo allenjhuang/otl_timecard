@@ -45,7 +45,7 @@ def main():
     browser.fill_in_timecard_details(
         timecard_path=config['timecard']['file']['path']
     )
-    logging.info(f"END {sys.argv[0]}\n\n")
+    logging.info(f"END {sys.argv[0]}\n")
 
 
 if __name__ == '__main__':

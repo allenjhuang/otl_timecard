@@ -36,8 +36,8 @@ class OracleTimeAndLabor(Browser):
 
     def __init__(
         self,
-        browser,
-        driver_path=None,
+        browser: str,
+        driver_path: str = None,
         default_wait_time=30,
         sso_username=None,
         sso_password=None
