@@ -9,5 +9,14 @@ urls = {
     }
 }
 
-COLS_BEFORE_TIME = 5  # Project, Task, Type, Work_Location_Country, Work_Location_State_Province
-NUMBER_OF_ROWS_BEFORE_ADD = 6  # The number of HTML rows available to fill with timecard information before needing to add more rows.
+timecard = {
+    'html': {
+        'table_tbody_xpath': "//span[@id='Hxctimecard']/table[2]//table[2]/tbody/tr[5]/td/table/tbody/tr[5]/td[2]/table/tbody"
+    },
+    # Project, Task, Type, Work_Location_Country, Work_Location_State_Province
+    'num_cols_before_time': 5,
+    'sleep_time': {
+        'after_project_field': 1,  # in seconds
+        'after_adding_html_row': 1  # in seconds
+    }
+}

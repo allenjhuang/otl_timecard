@@ -1,5 +1,8 @@
 # Edit and copy this into the same directory as create_timecard.py.
 
+[timecard.file]
+path = '/home/username/Documents/timecard.csv'
+
 [browser]
 # Valid options are "chrome", "edge", "firefox", or "ie".
 choice = "firefox"
@@ -11,9 +14,6 @@ chrome.path = 'C:\Users\username\Downloads\chromedriver.exe'
 edge.path = 'C:\Users\username\Downloads\msedgedriver.exe'
 firefox.path = '/home/username/Downloads/geckodriver'
 ie.path = 'C:\Users\username\Downloads\IEDriverServer.exe'
-
-[timecard.file]
-path = '/home/username/Documents/timecard.csv'
 
 [secrets.file]
 path = 'secrets.toml'

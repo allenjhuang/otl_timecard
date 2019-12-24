@@ -76,9 +76,77 @@ class Browser():
             )
         return element
 
+    def get_element_by_id(self, id, wait_time=None):
+        if wait_time is None:
+            element = self.driver_default_wait.until(
+                EC.visibility_of_element_located(
+                    (By.ID, id)
+                )
+            )
+        elif wait_time == 0:
+            element = self.driver.find_element_by_id(
+                id
+            )
+        else:
+            element = WebDriverWait(
+                driver=self.driver, timeout=wait_time
+            ).until(
+                EC.visibility_of_element_located(
+                    (By.ID, id)
+                )
+            )
+        return element
+
+    def get_element_by_link_text(self, link_text, wait_time=None):
+        if wait_time is None:
+            element = self.driver_default_wait.until(
+                EC.visibility_of_element_located(
+                    (By.LINK_TEXT, link_text)
+                )
+            )
+        elif wait_time == 0:
+            element = self.driver.find_element_by_link_text(
+                link_text
+            )
+        else:
+            element = WebDriverWait(
+                driver=self.driver, timeout=wait_time
+            ).until(
+                EC.visibility_of_element_located(
+                    (By.LINK_TEXT, link_text)
+                )
+            )
+        return element
+
+    def get_element_by_xpath(self, xpath, wait_time=None):
+        if wait_time is None:
+            element = self.driver_default_wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, xpath)
+                )
+            )
+        elif wait_time == 0:
+            element = self.driver.find_element_by_xpath(
+                xpath
+            )
+        else:
+            element = WebDriverWait(
+                driver=self.driver, timeout=wait_time
+            ).until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, xpath)
+                )
+            )
+        return element
+
     def get_elements(self, locator):
         return self.driver.find_elements(
             locator
+        )
+
+    def get_elements_by_xpath(self, xpath):
+        return self.driver.find_elements_by_xpath(
+            xpath
         )
 
     def wait(self, wait_time, until_condition):
