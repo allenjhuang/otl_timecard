@@ -5,3 +5,4 @@ __pycache__
 *.log
 /build
 /create_timecard.spec
+/dist
