@@ -17,7 +17,7 @@ Created and tested with Python 3.7.5.
 Go through steps 6 and 7 again for each timecard entry.
 
 
-##### Notes:
+#### Notes:
 1. If using a spreadsheet editor, make sure that autocorrect is turned off. For example, LibreCalc automatically replaces the regular dashes with long dashes in some situations. We want to make sure that the values for the first five fields exactly match the Oracle timecard website values.
 2. A new Firefox window will open up. If the secrets.toml file wasn't used, you'll have to enter your Oracle SSO username and password at the login screen. The program should move to the timecard section, and fill it out according to the "timecard.csv" from here. After filling out the timecard details, the program ends there. You'll have to save (if you want) and submit the timecard yourself.
 3. Make sure you're on the Oracle network in one way or another.
