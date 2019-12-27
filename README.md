@@ -7,14 +7,13 @@ Created and tested with Python 3.7.5.
 ## How to use
 ### Windows with Firefox
 1. Download the latest Windows release in https://github.com/allenjhuang/otl_timecard/releases.
-2. Extract create_timecard.exe.
-3. Download the Firefox webdriver.
-4. Extract geckodriver.exe to the same folder as create_timecard.exe.
-5. Copy timecard.csv, config.toml (and optionally secrets.toml) from the templates folder to the same folder as create_timecard.exe.
-6. Edit the timecard.csv file, entering your own timecard details. (See note #1)
-7. Run the executable, create_timecard.exe. (See note #2)
+2. Download the Firefox webdriver.
+3. Move geckodriver.exe to the same folder as create_timecard.exe.
+4. Copy timecard.csv, config.toml (and optionally secrets.toml) from the templates folder to the same folder as create_timecard.exe.
+5. Edit the timecard.csv file, entering your own timecard details. (See note #1)
+6. Run the executable, create_timecard.exe. (See note #2)
 
-Go through steps 6 and 7 again for each timecard entry.
+Go through steps 5 and 6 again for each timecard entry.
 
 
 #### Notes:
