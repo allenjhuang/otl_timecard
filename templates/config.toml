@@ -1,7 +1,5 @@
-# Edit and copy this into the same directory as create_timecard.py.
-
 [timecard.file]
-path = '/home/username/Documents/timecard.csv'
+path = 'timecard.csv'
 
 [browser]
 # Valid options are "chrome", "edge", "firefox", or "ie".
@@ -12,7 +10,7 @@ default_wait_time = 60  # in seconds
 # Only the browser choice needs to have its webdriver path set.
 chrome.path = 'C:\Users\username\Downloads\chromedriver.exe'
 edge.path = 'C:\Users\username\Downloads\msedgedriver.exe'
-firefox.path = '/home/username/Downloads/geckodriver'
+firefox.path = 'geckodriver.exe'
 ie.path = 'C:\Users\username\Downloads\IEDriverServer.exe'
 
 [secrets.file]

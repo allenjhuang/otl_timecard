@@ -1,4 +1,12 @@
-urls = {
+from __future__ import annotations
+
+from typing import Dict
+
+max_tries: Dict = {
+    'open_oracle_ebusiness_suite': 3
+}
+
+urls: Dict = {
     'oracle': {
         'ebusiness': 'https://global-ebusiness.oraclecorp.com/OA_HTML/OA.jsp?OAFunc=OAHOMEPAGE',
         'ebusiness_no_query_parameters': 'https://global-ebusiness.oraclecorp.com/OA_HTML/OA.jsp',
@@ -9,7 +17,7 @@ urls = {
     }
 }
 
-timecard = {
+timecard: Dict = {
     'html': {
         'table_tbody_xpath': "//span[@id='Hxctimecard']/table[2]//table[2]/tbody/tr[5]/td/table/tbody/tr[5]/td[2]/table/tbody"
     },
@@ -17,6 +25,7 @@ timecard = {
     'num_cols_before_time': 5,
     'sleep_time': {
         'after_project_field': 1,  # in seconds
+        'wait_for_data_entry': 1,  # in seconds
         'after_adding_html_row': 1  # in seconds
     }
 }

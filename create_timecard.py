@@ -1,13 +1,16 @@
+from __future__ import annotations
+
 from otl import OracleTimeAndLabor
 
 import logging
 import sys
 import toml
+from typing import Any, Dict, List
 
 
 def main():
     # Set up logging.
-    logging_handlers = [
+    logging_handlers: List[Any] = [
         # logging.FileHandler(filename="create_timecard.log"),  # Log to file.
         logging.StreamHandler(sys.stdout)  # Log to standard output (console).
     ]
@@ -20,18 +23,18 @@ def main():
     logging.info(f"BEGIN {sys.argv[0]}")
     # Load config file.
     logging.info("Loading config file")
-    config = toml.load("config.toml")
+    config: Dict = toml.load("config.toml")
     # Load secrets file if found.
-    is_secrets_found = False
+    is_secrets_found: bool = False
     try:
-        secrets = toml.load(config['secrets']['file']['path'])
+        secrets: Dict = toml.load(config['secrets']['file']['path'])
         is_secrets_found = True
     except FileNotFoundError:
         pass
 
     logging.info("Creating browser instance")
-    browser_choice = config['browser']['choice']
-    browser = OracleTimeAndLabor(
+    browser_choice: str = config['browser']['choice']
+    browser: OracleTimeAndLabor = OracleTimeAndLabor(
         browser=browser_choice,
         driver_path=config['browser']['webdriver'][browser_choice]['path'],
         default_wait_time=config['browser']['webdriver']['default_wait_time'],

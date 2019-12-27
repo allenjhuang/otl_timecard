@@ -3,3 +3,5 @@ __pycache__
 /config.toml
 /*secrets*
 *.log
+/build
+/create_timecard.spec

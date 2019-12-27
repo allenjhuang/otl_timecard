@@ -1,0 +1,6 @@
+Project,Task,Type,Work_Location_Country,Work_Location_State_Province,Sat_Start,Sat_Stop,Sun_Start,Sun_Stop,Mon_Start,Mon_Stop,Tue_Start,Tue_Stop,Wed_Start,Wed_Stop,Thu_Start,Thu_Stop,Fri_Start,Fri_Stop
+400000351 - 503125 Admin Project US,1.03.00,Meal Period,United States,Illinois,,,,,,,,,,,,,,
+400000351 - 503125 Admin Project US,1.01.00,LABOR - Straight Time,United States,Illinois,,,,,,,,,,,,,,
+400000351 - 503125 Admin Project US,1.04.00,LABOR - Straight Time,United States,Illinois,,,,,,,,,,,,,,
+400000351 - 503125 Admin Project US,1.03.00,Public Holiday Not Worked,United States,Illinois,,,,,09:00,17:00,,,,,,,,
+400000351 - 503125 Admin Project US,1.03.00,Vacation,United States,Illinois,,,,,,,09:00,17:00,09:00,17:00,09:00,17:00,09:00,17:00
