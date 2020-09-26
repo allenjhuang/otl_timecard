@@ -26,6 +26,7 @@ timecard: Dict = {
     'sleep_time': {
         'after_project_field': 1,  # in seconds
         'wait_for_data_entry': 1,  # in seconds
-        'after_adding_html_row': 1  # in seconds
+        'before_adding_html_row': 2,  # in seconds
+        'after_adding_html_row': 2  # in seconds
     }
 }

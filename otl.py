@@ -3,7 +3,7 @@ from __future__ import annotations
 import constants
 import selenium_extras.additional_expected_conditions as AdditionalEC
 from selenium_extras.additional_exceptions import (
-    IncorrectLoginDetails, MaxTriesReached
+    IncorrectLoginDetails, MaxTriesReached, SubtaskNotFound
 )
 from selenium_extras.wrapper import Browser
 from utils import log_wrap
@@ -335,29 +335,55 @@ class OracleTimeAndLabor(Browser):
         self, html_table_tbody_xpath: str, current_html_row_num: int
     ) -> None:
         """Requests additional rows for input on the timecard website."""
-        is_add_html_row_success: bool = False
-        for current_wait_time in range(
-            0,
-            self._default_wait_time,
-            constants.timecard['sleep_time']['after_adding_html_row']
-        ):
-            add_row_button: Any = self.get_element_by_xpath(
-                html_table_tbody_xpath
-                + "//button[contains(., 'Add Another Row')]"
-            )
-            add_row_button.click()
+        add_row_button: Any = self.get_element_by_xpath(
+            html_table_tbody_xpath
+            + "//button[contains(., 'Add Another Row')]"
+        )
+        # Wait a bit before clicking in case other things are still loading.
+        time.sleep(
+            constants.timecard['sleep_time']['before_adding_html_row']
+        )
+        add_row_button.click()
+        # Wait until a new HTML row is added.
+        current_add_row_wait_time: int = 0
+        add_row_button_click_counter: int = 1
+        while len(
+            self._get_list_of_html_inputs(self._get_html_row_xpath(
+                current_html_row_num, html_table_tbody_xpath
+            ))
+        ) == 0:
+            self._raise_error_if_invalid_subtask()
             time.sleep(
                 constants.timecard['sleep_time']['after_adding_html_row']
             )
-            # Wait until a new HTML row is added.
-            if len(
-                self._get_list_of_html_inputs(self._get_html_row_xpath(
-                    current_html_row_num, html_table_tbody_xpath
-                ))
-            ) > 0:
-                is_add_html_row_success = True
-                break
-        if is_add_html_row_success is False:
-            raise TimeoutError(
-                "Default wait time exceeded for adding HTML row."
+            current_add_row_wait_time +=  \
+                constants.timecard['sleep_time']['after_adding_html_row']
+            # Click the button once more halfway through waiting just in case.
+            if (
+                add_row_button_click_counter == 1
+                and current_add_row_wait_time > self._default_wait_time * 0.5
+            ):
+                add_row_button.click()
+                add_row_button_click_counter += 1
+            if current_add_row_wait_time > self._default_wait_time:
+                raise TimeoutError(
+                    "Default wait time exceeded for adding HTML row."
+                )
+
+    def _raise_error_if_invalid_subtask(self) -> None:
+        if (
+            len(
+                self.get_elements_by_xpath(
+                    "//h1[contains(text(), 'Error')]"
+                )
+            ) > 0
+            and len(self.get_elements_by_link_text("Task")) > 0
+            and len(
+                self.get_elements_by_xpath(
+                    "//div[contains(text(), 'Select a valid value.')]"
+                )
+            ) > 0
+        ):
+            raise SubtaskNotFound(
+                "Please check if the offending subtask exists."
             )

@@ -180,6 +180,12 @@ class Browser():
             locator
         )
 
+    def get_elements_by_link_text(self, link_text: str) -> List[Any]:
+        """Gets a list of the elements with the specified link text."""
+        return self.driver.find_elements_by_link_text(
+            link_text
+        )
+
     def get_elements_by_xpath(self, xpath: str) -> List[Any]:
         """Gets a list of the elements in the specified XPath."""
         return self.driver.find_elements_by_xpath(

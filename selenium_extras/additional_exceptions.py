@@ -16,3 +16,8 @@ class IncorrectLoginDetails(Error):
 class MaxTriesReached(Error):
     """Raised when max tries have been reached for an action."""
     pass
+
+
+class SubtaskNotFound(Error):
+    """Raised when a line item's subtask is not found."""
+    pass
