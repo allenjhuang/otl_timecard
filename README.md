@@ -15,7 +15,7 @@ Tested to be working with Python 3.8.5.
 7. Run the create_timecard executable. (See note #2)
 8. Save if you want and submit your timecard. This program does not submit for you!
 
-Go through steps 5 and 8 again for each timecard entry.
+Go through steps 6 and 8 again for each timecard entry.
 
 
 #### Notes:
